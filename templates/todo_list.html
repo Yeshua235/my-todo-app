@@ -3,21 +3,40 @@
 {% block title %}To-Do{% endblock title %}
 
 {% block content %}
+<div class="card-header"><h2>All Tasks</h2></div>
 {% for todo in todo_list %}
 <div class="card">
     <div class="card-header">
         <span >
             <p class="font-weight-bold"><a href="{% url 'todo_detail' todo.pk %}" class="font-weight-bold">{{ todo.title }}</a></p>
-            <p>By {{ todo.author }}</p>
-            <p>Created on: {{ todo.created }}</p>
-            <input type="checkbox" disabled {% if todo.Done %} checked {% endif %}>
+            <p>Created on: {{ todo.created }}</p>         
         </span>
     </div>
-
-    <div class="card-footer text-center text-muted">
-        <a href="{% url 'todo_delete' todo.pk %}">Delete</a>
-    </div>
 </div>
-<br />
 {% endfor %}
+
+<br>
+
+<div class="card-header">
+    <span>
+        <h2 class="font-weight-bold">Completed Tasks</h2>
+        {% for todo in todo_list %}
+        {% if todo.Done %}
+        <p class="font-weight-bold"><a href="{% url 'todo_detail' todo.pk %}" class="font-weight-bold">{{ todo.title }}</a></p>
+        {% endif %}
+        {% endfor %}
+    </span>
+</div>
+<br>
+<div class="card-header">
+    <span>
+        <h2 class="font-weight-bold">Uncompleted Tasks</h2>
+        {% for todo in todo_list %}
+        {% if todo.Done != True %}
+        <p class="font-weight-bold"><a href="{% url 'todo_detail' todo.pk %}" class="font-weight-bold">{{ todo.title }}</a></p>
+        {% endif %}
+        {% endfor %}
+    </span>
+</div>
+
 {% endblock content %}

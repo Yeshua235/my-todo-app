@@ -4,16 +4,18 @@
 {% block content %}
 <div class="article-entry">
     <h2>{{ object.title }}</h2>
-    <p>created on {{ object.date }}</p>
+    <p>created on {{ object.created }}</p>
     <p>{{ object.body }}</p>
-    {% if object.Done %}
+
+</div>
+
+<p><a href="{% url 'todo_edit' todo.pk %}">Edit</a> | <a href="{% url 'todo_delete' todo.pk %}">Delete</a></p>
+<br>    
+{% if object.Done %}
     <p>This Task has been done</p>
     {% else %}
     <p>This Task is yet to be completed</p>
     {% endif %}
-</div>
-
-<p><a href="{% url 'todo_edit' todo.pk %}">Edit</a> | <a href="{% url 'todo_delete' todo.pk %}">Delete</a></p>
-<p>Back to <a href="{% url 'todo_list' %}">All Tasks</a>.</p>
+    <p>Back to <a href="{% url 'todo_list' %}">All Tasks</a>.</p>
 {% endblock content %}
 

@@ -4,10 +4,23 @@
 
 {% block content %}
 
+<div>
+    <span>
+        <p>This is an App created to help you keep track of your tasks.</p>
+    </span>
+</div>
+
+<br>
+
 {% if user.is_authenticated %}
-<p><a href="{% url 'todo_new' %}">+ New Tasks</a></p>
+<p>Hi {{user.username}}!</p>
+<p>Your name is {{user.first_name}} {{user.last_name}}</p>
+<p>Got new tasks that you haven't included here?</p>
+<p><a href="{% url 'todo_new' %}">Add New Tasks</a> before you forget</p>
+<br>
+<p>Our memories can be tricky sometimes, but you don't have to worry.</p>
+<p>click below to view your tasks.</p>
 <p><a href="{% url 'todo_list' %}">My To-do List</a></p><hr>
-<p>Hi {{user.username}}! Your name is {{user.first_name}} {{user.last_name}}</p>
 <p><a href="{% url 'logout' %}">Log Out</a></p>
 
 {% else %}

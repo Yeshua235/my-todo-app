@@ -11,7 +11,7 @@ class Todo(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
         )
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150, unique=True)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     Done = models.BooleanField(default=False)
