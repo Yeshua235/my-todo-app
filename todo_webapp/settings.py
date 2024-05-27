@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import dj_database_url              #render additions
+
 from pathlib import Path
 import os
 
@@ -78,10 +80,10 @@ WSGI_APPLICATION = 'todo_webapp.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default':dj_database_url.config(
+            default='postgres://todo_postgresql_if33_user:qNP2fLvdFPmHIcgn1GzMJveomGvxDj9Q@dpg-cpa87s4f7o1s73ac3920-a/todo_postgresql_if33',
+            conn_max_age=600
+            )
 }
 
 
