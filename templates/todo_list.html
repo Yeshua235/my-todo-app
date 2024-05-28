@@ -14,14 +14,14 @@
     </div>
 </div>
 {% endfor %}
-
+<p><a href="{% url 'todo_new' %}">+ New Tasks</a></p>
 <br>
 
 <div class="card-header">
     <span>
         <h2 class="font-weight-bold">Completed Tasks</h2>
         {% for todo in todo_list %}
-        {% if todo.Done %}
+        {% if todo.done %}
         <p class="font-weight-bold"><a href="{% url 'todo_detail' todo.pk %}" class="font-weight-bold">{{ todo.title }}</a></p>
         {% endif %}
         {% endfor %}
@@ -32,7 +32,7 @@
     <span>
         <h2 class="font-weight-bold">Uncompleted Tasks</h2>
         {% for todo in todo_list %}
-        {% if todo.Done != True %}
+        {% if todo.done != True %}
         <p class="font-weight-bold"><a href="{% url 'todo_detail' todo.pk %}" class="font-weight-bold">{{ todo.title }}</a></p>
         {% endif %}
         {% endfor %}

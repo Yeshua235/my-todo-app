@@ -4,15 +4,18 @@
 {% block content %}
 <div class="article-entry">
     <h2>{{ object.title }}</h2>
-    <p>created on {{ object.created }}</p>
-    <p>{{ object.body }}</p>
-
+    <p>created on {{ object.created }}</p><br>
+    <div><pre>{{ object.body }}</pre></div>
 </div>
 
 <p><a href="{% url 'todo_edit' todo.pk %}">Edit</a> | <a href="{% url 'todo_delete' todo.pk %}">Delete</a></p>
-<br>    
-{% if object.Done %}
+<br>
+<p>Your scheduled time to start the task: {{ todo.time_to_start }}</p>
+<p>Time you planned to complete task: {{ todo.time_to_finish }}</p>   
+{% if object.done %}
     <p>This Task has been done</p>
+    <p>The estimated time taken to complete task is shown in detail below</p> 
+    <div><p> {{time_taken}} </p></div>
     {% else %}
     <p>This Task is yet to be completed</p>
     {% endif %}

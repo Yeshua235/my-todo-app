@@ -14,7 +14,10 @@ class Todo(models.Model):
     title = models.CharField(max_length=150, unique=True)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    Done = models.BooleanField(default=False)
+    done = models.BooleanField(default=False)
+    time_to_start = models.DateTimeField(null=True, blank=True)
+    time_to_finish = models.DateTimeField(null=True, blank=True)
+    completed_at = models.DateTimeField(null=True, blank=True)
     
     def __str__(self) -> str:
         return self.title
