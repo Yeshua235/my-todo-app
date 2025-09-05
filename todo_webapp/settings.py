@@ -14,6 +14,7 @@ import dj_database_url              #render additions
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,7 +84,7 @@ DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
-#    }    
+#    }
     'default':dj_database_url.config(
             default='postgres://todo_postgresql_if33_user:qNP2fLvdFPmHIcgn1GzMJveomGvxDj9Q@dpg-cpa87s4f7o1s73ac3920-a/todo_postgresql_if33',
             conn_max_age=600
@@ -139,8 +140,8 @@ LOGOUT_REDIRECT_URL = 'home'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'smtp.gmail.com' 
-EMAIL_HOST_USER = 'joshuaking12357@gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'gxgr uukr aasb xqom'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
